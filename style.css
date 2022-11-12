@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    overflow: hidden;
+    height: 100vh;
+}
+h1{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 900;
+}
+
+.instContainer{
+    position: relative;
+    margin-bottom: 5rem;
+}
+
+.instructor{
+    position: absolute;
+    /* top: 100px; */
+    padding: 5px;
+    font-size: .9rem;
+    border-radius: 5px;
+    color: white;
+}
+
+.instructor.player1{
+    left: 1rem;
+    background-color: rgb(2 179 2 / .8);
+    animation: fade-left .5s ease-in-out;
+}
+
+.instructor.player2{
+    right: 1rem;
+    background-color: red;
+    animation: fade-right .5s ease-in-out;
+}
+
+@keyframes fade-left{
+    0%{
+        left: -100%;
+    }
+    40%{
+        left: 1rem;
+    }
+    60%{
+        left: 1.3rem;
+    }
+    100%{
+        left: 1rem;
+    }
+}
+@keyframes fade-right{
+    0%{
+        right: -100%;
+    }
+    40%{
+        right: 1rem;
+    }
+    60%{
+        right: 1.3rem;
+    }
+    100%{
+        right: 1rem;
+    }
+}
+
+.instructor h3{
+    font-weight: 500;
+}
+
+
+
+
+#playerDetails{
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    /* display: none; */
+}
+
+#playerDetails > *{
+    flex-grow:unset;
+}
+
+input[type=text]{
+    margin-bottom: 1rem;
+    padding: .3rem;
+    padding-left: .7rem;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+button{
+    padding: 4px 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgb(0 0 0 / .2);
+    border-radius: 5px;
+    margin: 0 1rem;
+}
+
+button:hover{
+    opacity: .9;
+}
+button#clearBtn{
+    border: 1px solid red;
+    color: red;
+    background-color: transparent;
+}
+
+button#playBtn{
+    border: 1px solid rgb(2, 179, 2);
+    background-color: rgb(2, 179, 2);
+    color: white;
+
+}
+
+#gameContainer{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    width: 242px;
+    margin: auto;
+    background-color: black;
+    row-gap: 1px;
+    display: none;
+}
+
+.row{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1px;
+    cursor: pointer;
+}
+
+.col{
+    width: 80px;
+    height: 80px;
+    border-bottom: none;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+}
+
+.playersScore{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 400px;
+    margin: auto;
+    margin-top: 5rem;
+    background-color: #343434;
+    border-radius: 8px;
+    padding: 1px;
+    display: none;
+}
+
+h2{
+    font-weight: 500;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 8px;
+    background-color: #232323;
+    color: cyan;
+}
+
+.score{
+    margin: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.player1Score, .player2Score{
+    display: flex;
+}
+
+.score h3{
+    font-weight: 400;
+    color: white;
+    display: flex;
+}
+
+span{
+    font-weight: 300;
+    color: white;
+    margin-left: 5px;
+    font-size: 1.3rem;
+}
+
+.gameOverContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0 0 0 / .2);
+    transform-origin: center;
+    animation: fade-center .3s ease-in-out;
+    display: none;
+}
+
+@keyframes fade-center{
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+.overContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 6rem;
+    background-color: #898989;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgb(0 0 0 / .3);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h3#winner{
+    width: 400px;
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+button#playAgain{
+    background-color: rgb(4, 216, 4);
+    border: none;
+    color :white;
+    margin: auto;
+}
+
+
+@media screen and (max-width: 500px){
+    .playersScore{
+        width: 100vw;
+        margin-bottom: 0;
+    }
+}
