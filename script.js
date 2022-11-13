@@ -6,6 +6,7 @@ let playersScore = document.getElementById("playersScore");
 //importing sounds
 let clickSound = new Audio('click.mp3')
 let winSound = new Audio('win.mp3')
+
 //players name input field
 let player1Name = document.getElementById("player1");
 let player2Name = document.getElementById("player2");
@@ -18,6 +19,14 @@ let playBtn = document.getElementById("playBtn");
 let instructText = document.getElementById("instruct");
 let instructor = document.getElementById("instructor");
 
+//Score board players name
+let p1Name = document.getElementById("player1Name");
+let p2Name = document.getElementById("player2Name");
+let p1Score = document.getElementById("p1Score");
+let p2Score = document.getElementById("p2Score");
+let drawScore = document.getElementById('drawScore')
+let drawScoreHeading = document.getElementById('draw')
+
 //adding click event in buttons
 clearBtn.addEventListener("click", (e) => {
   player1Name.value = "";
@@ -28,30 +37,32 @@ playBtn.addEventListener("click", (e) => {
   detailsForm.style.display = "none";
   gameContainer.style.display = "grid";
   playersScore.style.display = "block";
+
   //setting the players name in score board
   p1Name.innerHTML = `${player1Name.value} &nbsp;<p style="color: green;">O</p> &nbsp; :`;
   p2Name.innerHTML = `${player2Name.value} &nbsp;<p style="color: red;">X</p> &nbsp; :`;
+  drawScoreHeading.innerHTML = `Draw :&nbsp;`
+  
   instructText.innerHTML = `<b>${player1Name.value}</b> make your move`;
   instructor.classList.add("player1");
 });
 
-//Score board players name
-let p1Name = document.getElementById("player1Name");
-let p2Name = document.getElementById("player2Name");
-let p1Score = document.getElementById("p1Score");
-let p2Score = document.getElementById("p2Score");
 
 //gameOver container
 let gameOverContainer = document.getElementById("gameOverContainer");
 let winner = document.getElementById("winner");
+
 //initialing the players score
 let player1Score = 0;
 let player2Score = 0;
+let draw = 0;
 
 //setting the players score in score board
 const setPlayerScore = () => {
   p1Score.innerText = player1Score;
   p2Score.innerText = player2Score;
+  drawScore.innerText = draw;
+  
 };
 setPlayerScore();
 
@@ -147,6 +158,7 @@ Array.from(cells).forEach((cell) => {
                 setPlayerScore();
                 winner.innerText = `${player1Name.value} wins`;
                 gameOverContainer.style.display = "block";
+                winSound.play()
               }
               return;
             }
@@ -188,7 +200,9 @@ Array.from(cells).forEach((cell) => {
         });
       }
     }
-    if (box_left === 0) {
+    if (box_left === 0 && !matches) {
+        draw++
+        setPlayerScore();
       winner.innerText = `DRAW`;
       gameOverContainer.style.display = "block";
     }

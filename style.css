@@ -132,8 +132,12 @@ button#playBtn{
 }
 
 #gameContainer{
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
+    /* display: grid; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* grid-template-rows: repeat(3, 1fr); */
     width: 242px;
     margin: auto;
     background-color: black;
@@ -204,6 +208,11 @@ span{
     color: white;
     margin-left: 5px;
     font-size: 1.3rem;
+}
+
+.drawScore{
+    display: flex;
+    margin: 0 1rem;
 }
 
 .gameOverContainer{
