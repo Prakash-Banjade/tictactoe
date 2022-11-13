@@ -159,6 +159,7 @@ Array.from(cells).forEach((cell) => {
                 winner.innerText = `${player1Name.value} wins`;
                 gameOverContainer.style.display = "block";
                 winSound.play()
+                box_left = 9
               }
               return;
             }
@@ -191,6 +192,7 @@ Array.from(cells).forEach((cell) => {
                 winner.innerText = `${player2Name.value} wins`;
                 gameOverContainer.style.display = "block";
                 winSound.play();
+                box_left = 9
               }
               return;
             }
@@ -205,6 +207,7 @@ Array.from(cells).forEach((cell) => {
         setPlayerScore();
       winner.innerText = `DRAW`;
       gameOverContainer.style.display = "block";
+      box_left = 9
     }
   });
 });
